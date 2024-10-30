@@ -10,9 +10,11 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from tasks.views import UserSignUpView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('signup/', UserSignUpView.as_view(), name='user-signup'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/tasks/', include('tasks.urls')),
